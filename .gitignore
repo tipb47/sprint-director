@@ -1,0 +1,13 @@
+# The cross-project registry is per-user runtime state, never committed.
+# It lives at ~/.claude/sprint/projects.json, not in this repo — listed here
+# only as a guard in case anyone runs the skill from inside a clone.
+projects.json
+**/projects.json
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.swp
+*~
+.idea/
+.vscode/

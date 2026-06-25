@@ -1,0 +1,14 @@
+{
+  "name": "sprint-director",
+  "description": "Sprint-directed multi-agent development methodology for Claude Code. A fresh director session per sprint spawns isolated track subagents on their own branches, audits their diffs against a design contract, merges in order, and keeps a living state ledger.",
+  "version": "1.0.0",
+  "author": {
+    "name": "tipb47",
+    "url": "https://github.com/tipb47"
+  },
+  "homepage": "https://github.com/tipb47/sprint-director",
+  "repository": "https://github.com/tipb47/sprint-director",
+  "license": "MIT",
+  "keywords": ["sprint", "multi-agent", "orchestration", "subagents", "methodology", "director", "worktrees"],
+  "skills": "./skills"
+}
