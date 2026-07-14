@@ -45,8 +45,18 @@ existing files.
    report gaps (no STATE.md? no guidelines? missing sections?), offer to fill ONLY the
    gaps using the templates, then register (step 5) and stop. Never modify existing docs
    beyond explicitly approved gap-fills.
-2. **Interview** (AskUserQuestion, batched — adapt wording to what you can already see in
-   the repo; skip questions the codebase answers):
+2. **Interview** (AskUserQuestion — adapt wording to what you can already see in the repo;
+   skip questions the codebase answers). Interview discipline, here and in every later
+   question round:
+   - **Every question carries your recommended answer** as the first option, labeled
+     `(Recommended)` — never present a bare option list you have no opinion on.
+   - **Batch only independent questions.** If one question's answer determines whether or
+     how another applies, sequence them — ask the upstream question first, then shape the
+     downstream batch from its answer. Never make the user answer a question that a
+     sibling answer in the same batch could invalidate.
+   - Look up *facts* yourself (filesystem, git, configs); put only *decisions* to the user.
+
+   The fixed topics:
    - Ops location and git tracking: `ops/` vs `.docs/ops/`; tracked or untracked? If
      tracked, ops bookkeeping (STATE.md/SPRINT.md churn) commits SEPARATELY from code under
      an `[sNN/ops]` tag; if untracked, the ops dir is gitignored. Either way the code
@@ -65,10 +75,18 @@ existing files.
      usual answer)?
    - Roadmap seed: the next 3–6 milestone-level goals, and which ONE becomes sprint-01.
 
-   After the fixed questions, do a **clarify pass**: if the roadmap seed or sprint-01 scope
-   is ambiguous, contradictory, or too thin for a self-contained track, ask focused
-   follow-ups (AskUserQuestion) until sprint-01 can be written with zero placeholders.
-   Never generate hollow docs over unresolved ambiguity.
+   After the fixed questions, do a **grill pass** — proactive, not reactive: attack the
+   sprint-01 plan's weakest assumptions even when nothing looks ambiguous. Probe what the
+   user did NOT put on the table: failure modes ("what happens when the deploy/migration/
+   external API fails mid-sprint?"), boundary cases, and contradictions between answers
+   ("you chose X earlier, but this goal implies Z — which wins?"). 2–3 adversarial
+   questions (AskUserQuestion, each with a recommended answer) aimed at whatever would
+   most likely sink or reshape sprint-01.
+
+   Then a **clarify pass**: if the roadmap seed or sprint-01 scope is still ambiguous,
+   contradictory, or too thin for a self-contained track, ask focused follow-ups until
+   sprint-01 can be written with zero placeholders. Never generate hollow docs over
+   unresolved ambiguity.
 3. **Generate** from `templates/` (this skill's folder), substituting interview answers
    for `{{PLACEHOLDERS}}` and resolving every `<!-- init: ... -->` directive (these
    comments instruct YOU what to fill; they never survive into generated files):
@@ -118,7 +136,9 @@ Become the sprint director for the current project's active sprint.
    sprint needs are alive. **If reality contradicts the sprint doc: amend SPRINT.md and
    log the deviation in STATE.md BEFORE spawning tracks.** Docs never drift from what runs.
 4. **Clarify, reconcile, then plan:** raise ALL blocking/open/clarifying questions via
-   AskUserQuestion (batched, concrete options; genuine operator decisions only). If answers
+   AskUserQuestion (genuine operator decisions only — look up facts yourself). Follow the
+   init interview discipline: every question leads with your `(Recommended)` answer, and
+   dependent questions are sequenced, not batched with the questions they depend on. If answers
    shift scope, reconcile — amend SPRINT.md and log in STATE.md — then re-surface any new
    ambiguity, looping until the sprint is unambiguous. A track must never inherit a question
    you could have closed here. Present Gate 0 items. Then present your execution plan (plan
